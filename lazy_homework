@@ -6,7 +6,10 @@ d = a > 0 and b > 0 and c > 0 and print("Нет нулевых значений"
 
 # 2. Вывести первое ненулевое значение. Если введены все нули - вывести "Введены все нули!" (цикл не использовать) без if - использовать лень
 f = "Первое ненулевое значение:"
-e = (a > 0 and print(f, a)) or (b > 0 and a == 0 and print(f, b)) or (c > 0 and a == 0 and b == 0 and print(f, c) or (a == 0 and b == 0 and c == 0 and print("Введены все нули")))
+e = (a > 0 and print(f, a))\
+    or (b > 0 and a == 0 and print(f, b))\
+        or (c > 0 and a == 0 and b == 0 and print(f, c))\
+            or (a == 0 and b == 0 and c == 0 and print("Введены все нули"))
 
 # 3. Если первое значение  больше чем сумма второго и третьего вывести a - b - c
 g = a > b+c and print("Результат операции a-b-c:", a-b-c)
