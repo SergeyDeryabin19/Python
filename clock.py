@@ -74,7 +74,23 @@ dict_nombers=\
     ■   ■
     ■ ■ ■
         ■
-    ■■■■■"""
+    ■■■■■""",
+"tochki":\
+    """
+         
+      ■  
+         
+      ■  
+         """,
+"netochki":\
+    """
+         
+         
+         
+         
+         """
+
+    
 }
 
 
@@ -83,15 +99,28 @@ def screen_clear():
     os.system("CLS")
     
 
-def print_result(continue_hour_1, continue_hour_2, continue_minute_1, continue_minute_2, continue_second_1, continue_second_2):
+def print_result(continue_hour_1, continue_hour_2, continue_minute_1,\
+    continue_minute_2, continue_second_1, continue_second_2):
     lines1 = continue_hour_1.splitlines()
     lines2 = continue_hour_2.splitlines()
     lines3 = continue_minute_1.splitlines()
     lines4 = continue_minute_2.splitlines()
     lines5 = continue_second_1.splitlines()
     lines6 = continue_second_2.splitlines()
-    for i in range(len(lines1)):
-        print("{} {} {} {} {} {}".format(lines1[i], lines2[i], lines3[i], lines4[i], lines5[i], lines6[i]))
+    tochki=dict_nombers["tochki"]
+    tochki_sp=tochki.splitlines()
+    ne_tochki=dict_nombers["netochki"]
+    ne_tochki_sp=ne_tochki.splitlines()
+    if datetime.datetime.now().second % 2 == 0:
+        for i in range(len(lines1)):
+            print("{} {} {} {} {} {} {} {}".format(lines1[i], lines2[i],\
+                ne_tochki_sp[i], lines3[i], lines4[i], ne_tochki_sp[i],\
+                    lines5[i], lines6[i]))
+    elif datetime.datetime.now().second % 2 != 0:
+        for i in range(len(lines1)):
+            print("{} {} {} {} {} {} {} {}".format(lines1[i], lines2[i],\
+                tochki_sp[i], lines3[i], lines4[i], tochki_sp[i], lines5[i],\
+                    lines6[i]))
     
 
 def chek_zero(our_number):
@@ -140,9 +169,10 @@ def main():
     continue_hour_1, continue_hour_2=new_vew_hour(current_time_number)
     continue_minute_1, continue_minute_2=new_vew_minute(current_time_number)
     continue_second_1, continue_second_2=new_vew_second(current_time_number)
-    print_result(continue_hour_1, continue_hour_2, continue_minute_1, continue_minute_2, continue_second_1, continue_second_2)
+    print_result(continue_hour_1, continue_hour_2, continue_minute_1,\
+        continue_minute_2, continue_second_1, continue_second_2)
     time.sleep(1)
-    print()
+    
     
     
        
