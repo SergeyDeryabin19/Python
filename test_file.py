@@ -143,25 +143,3 @@ print_spline_number(string_0, string_1, string_2, string_3, string_4,\
 
  
 
-
-
-# a=dict_nombers[2].split(" ")
-# print(a[0])
-# b=","
-# print(b.join(a))
-
-# print(b.join(a),b.join(a))
-# print(dict_nombers[2].split("-"))
-import time
-import os
-while True:
-    current_time = time.localtime()
-    hours = str(current_time.tm_hour).zfill(2)
-    minutes = str(current_time.tm_min).zfill(2)
-    seconds = str(current_time.tm_sec).zfill(2)
- 
-    if int(hours) < 24 and int(minutes) < 60 and int(seconds) < 60:
-        colon = current_time.tm_sec % 2 == 0  # проверка на четность секунд
-        display_time(hours, minutes, seconds, colon)
-
-    time.sleep(1)
