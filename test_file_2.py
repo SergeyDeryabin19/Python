@@ -1,39 +1,10 @@
-import time
-import os
+from colorama import init, Fore
 
-digits = {
-    '0': [' 000 ', '0   0', '0   0', '0   0', ' 000 '],
-    '1': ['  0  ', ' 00  ', '  0  ', '  0  ', ' 000 '],
-    '2': [' 000 ', '    0', ' 000 ', '0    ', ' 000 '],
-    '3': [' 000 ', '    0', ' 000 ', '    0', ' 000 '],
-    '4': ['0  0 ', '0  0 ', ' 000 ', '    0', '    0'],
-    '5': [' 000 ', '0    ', ' 000 ', '    0', ' 000 '],
-    '6': [' 000 ', '0    ', ' 000 ', '0   0', ' 000 '],
-    '7': [' 000 ', '    0', '    0', '    0', '    0'],
-    '8': [' 000 ', '0   0', ' 000 ', '0   0', ' 000 '],
-    '9': [' 000 ', '0   0', ' 000 ', '    0', ' 000 ']
-}
+init()   # инициализация colorama
 
-def display_time(hours, minutes, seconds, colon=True):
-    os.system('cls' if os.name == 'nt' else 'clear')
+colors = [Fore.RED, Fore.GREEN, Fore.BLUE]   # список используемых цветов
 
-    for i in range(5):
-        for digit in [hours[0], hours[1], minutes[0], minutes[1], seconds[0], seconds[1]]:
-            print(digits[digit][i], end=' ')
-            if colon and i == 1:
-                print(' . ', end='')
-            else:
-                print('   ', end='')
-        print()
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    # список чисел, которые нужно вывести на экран
 
-while True:
-    current_time = time.localtime()
-    hours = str(current_time.tm_hour).zfill(2)
-    minutes = str(current_time.tm_min).zfill(2)
-    seconds = str(current_time.tm_sec).zfill(2)
- 
-    if int(hours) < 24 and int(minutes) < 60 and int(seconds) < 60:
-        colon = current_time.tm_sec % 2 == 0
-        display_time(hours, minutes, seconds, colon)
-
-    time.sleep(1)
+for i in range(len(numbers)):
+    print(colors[i % len(colors)] + str(numbers[i])) # окрашиваем число в нужный цвет и выводим на экран
