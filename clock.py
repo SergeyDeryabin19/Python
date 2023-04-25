@@ -185,9 +185,10 @@ def main():
         continue_minute_2, continue_second_1, continue_second_2)
     time.sleep(1)
     
+     
     
-    
-    
+
+    #something
        
 while True:
     main()
