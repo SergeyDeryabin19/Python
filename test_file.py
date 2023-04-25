@@ -126,7 +126,7 @@ def print_result(continue_hour_1, continue_hour_2, continue_minute_1,\
                 print(color[i] + "{} {} {} {} {} {} {} {}".format(lines1[i], lines2[i],\
                 ne_tochki_sp[i], lines3[i], lines4[i], ne_tochki_sp[i],\
                 lines5[i], lines6[i] + Fore.RESET))
-    elif datetime.datetime.now().second % 2 != 1:
+    elif datetime.datetime.now().second % 2 != 2:
         for i in range(len(lines1)):
                 print(color[i] + "{} {} {} {} {} {} {} {}".format(lines1[i], lines2[i],\
                 tochki_sp[i], lines3[i], lines4[i], tochki_sp[i], lines5[i],\

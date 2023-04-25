@@ -1,10 +1,51 @@
-from colorama import init, Fore
+from random import randint
 
-init()   # инициализация colorama
+# Создаем пустое поле 10х10
+board = []
+for i in range(10):
+    board.append(["O"] * 10)
 
-colors = [Fore.RED, Fore.GREEN, Fore.BLUE]   # список используемых цветов
+# Функция для печати текущего состояния поле
+def print_board(board):
+    for row in board:
+        print(" ".join(row))
 
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]    # список чисел, которые нужно вывести на экран
+# Генерируем случайную позицию корабля
+def random_row(board):
+    return randint(0, len(board) - 1)
 
-for i in range(len(numbers)):
-    print(colors[i % len(colors)] + str(numbers[i])) # окрашиваем число в нужный цвет и выводим на экран
+def random_col(board):
+    return randint(0, len(board[0]) - 1)
+
+# Заполняем поле одним кораблем
+ship_row = random_row(board)
+print(ship_row)
+ship_col = random_col(board)
+print(ship_col)
+
+# Играем до тех пор, пока корабль не будет потоплен
+for turn in range(4):
+    print("Ход", turn + 1)
+
+    # Просим игрока выбрать строку и столбец
+    guess_row = int(input("Выберите строку (от 1 до 10): ")) - 1
+    guess_col = int(input("Выберите столбец (от 1 до 10): ")) - 1
+
+    # Проверяем, попал ли игрок в корабль
+    if guess_row == ship_row and guess_col == ship_col:
+        print("Поздравляем, вы потопили корабль!")
+        break
+    else:
+        # Если игрок промахнулся, отмечаем клетку на поле
+        if (guess_row < 0 or guess_row > 9) or (guess_col < 0 or guess_col > 9):
+            print("Выстрел за пределами поля.")
+        elif board[guess_row][guess_col] == "X":
+            print("Вы уже стреляли в эту клетку.")
+        else:
+            print("Промах.")
+            board[guess_row][guess_col] = "X"
+        # Печатаем новое состояние поля
+        print_board(board)
+    # Если это был последний ход, сообщаем игроку, что он проиграл
+    if turn == 3:
+        print("Игра окончена. Вы проиграли.")

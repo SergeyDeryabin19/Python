@@ -143,7 +143,16 @@ def new_vew_hour(current_time_number):
     new_current_splited_hour_1=dict_nombers[new_current_splited_hour[0]]
     new_current_splited_hour_2=dict_nombers[new_current_splited_hour[1]]
     return new_current_splited_hour_1, new_current_splited_hour_2
-    
+
+
+def all_in_one(input_number, needet_atr):
+    current_number = str(input_number.needet_atr)
+    splited_number = [int(a) for a in str(current_number)]
+    new_current_splited_number=chek_zero(splited_number)
+    new_current_splited_number_1=dict_nombers[new_current_splited_number[0]]
+    new_current_splited_number_2=dict_nombers[new_current_splited_number[1]]
+    return new_current_splited_number_1, new_current_splited_number_2
+        
 
 def new_vew_minute(current_time_number):
     current_minute = current_time_number.minute
@@ -166,9 +175,12 @@ def new_vew_second(current_time_number):
 def main():
     screen_clear()
     current_time_number = current_time()
-    continue_hour_1, continue_hour_2=new_vew_hour(current_time_number)
-    continue_minute_1, continue_minute_2=new_vew_minute(current_time_number)
-    continue_second_1, continue_second_2=new_vew_second(current_time_number)
+    hour=None
+    minute=None
+    second=None
+    continue_hour_1, continue_hour_2=all_in_one(current_time_number, hour)
+    continue_minute_1, continue_minute_2=all_in_one(current_time_number,minute)
+    continue_second_1, continue_second_2=all_in_one(current_time_number,second)
     print_result(continue_hour_1, continue_hour_2, continue_minute_1,\
         continue_minute_2, continue_second_1, continue_second_2)
     time.sleep(1)
